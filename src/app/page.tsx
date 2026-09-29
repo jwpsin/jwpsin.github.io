@@ -11,6 +11,7 @@ import { experienceData } from "@/data/experience";
 import { PortfolioEntry } from "@/components/portfolio-entry";
 import { portfolioData } from "@/data/portfolio";
 import { sectionOrder, Section } from "@/data/section-order";
+import { personal } from "@/data/personal";
 
 export default function Home() {
   return (
@@ -79,9 +80,21 @@ export default function Home() {
                   return (
                     publicationData.length > 0 && (
                       <section key={sectionName}>
-                        <h2 className="font-serif text-l mb-12 tracking-wide uppercase">
-                          Publications
+                        <h2 className="font-serif text-l mb-3 tracking-wide uppercase">
+                          Selected Publications
                         </h2>
+                        <p className="text-xs text-zinc-500 mb-12">
+                          For a full and up-to-date publication list, see{" "}
+                          <a
+                            href="https://scholar.google.com/citations?user=blXz-BQAAAAJ&hl=en"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-zinc-900"
+                          >
+                            Google Scholar
+                          </a>
+                          .
+                        </p>
                         <div className="space-y-12">
                           {publicationData.map((publication, index) => (
                             <div key={index}>
@@ -132,6 +145,17 @@ export default function Home() {
                   return null;
               }
             })}
+            {personal.description && (
+              <section>
+                <h2 className="font-serif text-l mb-6 tracking-wide uppercase">
+                  {personal.title}
+                </h2>
+                <p
+                  className="font-serif text-sm leading-relaxed text-zinc-700 [&_a]:underline [&_a]:text-zinc-900 [&_a:hover]:text-zinc-600"
+                  dangerouslySetInnerHTML={{ __html: personal.description }}
+                />
+              </section>
+            )}
           </div>
         </div>
       </div>
